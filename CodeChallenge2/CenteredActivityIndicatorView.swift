@@ -20,12 +20,11 @@ class CenteredBlueActivityIndicatorView: UIActivityIndicatorView {
         super.init(coder: coder)
     }
     
-    func defaultConstraints(superView view: UIView) -> [NSLayoutConstraint] {
+    func activateDefaultConstraints(superView view: UIView) {
         
-        let centerXConstraint = centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        let centerYConstraint = centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        
-        return [centerXConstraint, centerYConstraint]
+        translatesAutoresizingMaskIntoConstraints = false
+        centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
     
 }

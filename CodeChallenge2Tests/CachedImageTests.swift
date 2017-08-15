@@ -6,6 +6,10 @@
 //  Copyright © 2017 AnXu. All rights reserved.
 //
 
+/*
+ testing images download and cacheing image locally
+ */
+
 import UIKit
 import XCTest
 

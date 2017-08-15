@@ -8,9 +8,13 @@ To run the app open it with Xcode 8.3.3. Pleaes change the "Signing" setting to 
 * Xcode Verions: 8.3.3
 * No 3rd party framework used
 * Tested Devices: iPhone 6S, iPad Air
-* Design patterns: MVVM
+* Design patterns: MVVM, MVC
 
 # Unit Tests
 * tested API call (files: ObjectFetchingTests.swift )
 * tested images downloads  (files: CachedImageTests.swift )
 * tested local image caches (files: CachedImageTests.swift )
+* tested Category, Media item, Images json mapping object (files: ObjectFetchingTests.swift )
+
+# Time Logs
+* Project started at Tuesday 15th Auguest 11:30 AM

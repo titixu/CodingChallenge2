@@ -16,24 +16,44 @@ class CategoryViewController: UITableViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        
-        viewModel.loadData { (error: Error?) in
-            if let error = error {
-                displayAlert(message: error.localizedDescription)
-            } else {
-                tableView.reloadData()
-            }
-        }
+        insertActivityIndicator()
+        addRefreshControl()
+        refresh()
     }
 
     //MARK: - UIs
     private func insertActivityIndicator() {
-        view.addSubview(loadingIndicator)
-        NSLayoutConstraint.activate(loadingIndicator.defaultConstraints(superView: view))
+        tableView.addSubview(loadingIndicator)
+        loadingIndicator.activateDefaultConstraints(superView: tableView!)
     }
     
  
+    //MARK: - Private methods
+    @objc private func refresh() {
+        
+        loadingIndicator.startAnimating()
+        
+        viewModel.loadData {[weak self] (error: Error?) in
+            DispatchQueue.main.async {
+                
+                self?.loadingIndicator.stopAnimating()
+                self?.refreshControl?.endRefreshing()
+                
+                if let error = error {
+                    self?.displayAlert(message: error.localizedDescription)
+                } else {
+                    self?.tableView.reloadData()
+                }
+            }
+        }
+    }
+    
+    private func addRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl?.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl?.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
+    }
+    
 }
 
  
