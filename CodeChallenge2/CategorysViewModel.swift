@@ -1,5 +1,5 @@
 //
-//  CategoryViewModel.swift
+//  CategorysViewModel.swift
 //  CodeChallenge2
 //
 //  Created by SamXu on 15/8/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CategoryViewModel {
+class CategorysViewModel {
     
     let catagoryURL  = URL(string: "https://pastebin.com/raw/8LiEHfwU")!
     

@@ -13,7 +13,7 @@
 		E8B0C7541F42906B00161F07 /* CodeChallenge2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0C7531F42906B00161F07 /* CodeChallenge2UITests.swift */; };
 		E8B0C7631F42931F00161F07 /* ObjectFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0C7621F42931F00161F07 /* ObjectFetcher.swift */; };
 		E8B0C7651F42939100161F07 /* CachedImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0C7641F42939100161F07 /* CachedImageFetcher.swift */; };
-		E8B0C7681F429E3000161F07 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0C7671F429E3000161F07 /* CategoryViewModel.swift */; };
+		E8B0C7681F429E3000161F07 /* CategorysViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0C7671F429E3000161F07 /* CategorysViewModel.swift */; };
 		E8B0C76D1F429F2700161F07 /* JsonMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0C76C1F429F2700161F07 /* JsonMapping.swift */; };
 		E8B0C76F1F429F8B00161F07 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = E8B0C76E1F429F8B00161F07 /* data.json */; };
 		E8B0C7721F42A08F00161F07 /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0C7711F42A08F00161F07 /* AlertFactory.swift */; };
@@ -25,6 +25,8 @@
 		E8B0C7821F42C4B700161F07 /* MediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0C7811F42C4B700161F07 /* MediaItem.swift */; };
 		E8B0C7841F42C98500161F07 /* ImageCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0C7831F42C98500161F07 /* ImageCollection.swift */; };
 		E8B0C7861F43D76900161F07 /* JsonError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0C7851F43D76900161F07 /* JsonError.swift */; };
+		E8B0C7881F43EFEB00161F07 /* CategoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0C7871F43EFEB00161F07 /* CategoryCollectionViewController.swift */; };
+		E8B0C78A1F43F24D00161F07 /* CategoryCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0C7891F43F24D00161F07 /* CategoryCollectionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +59,7 @@
 		E8B0C7551F42906B00161F07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8B0C7621F42931F00161F07 /* ObjectFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectFetcher.swift; sourceTree = "<group>"; };
 		E8B0C7641F42939100161F07 /* CachedImageFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachedImageFetcher.swift; sourceTree = "<group>"; };
-		E8B0C7671F429E3000161F07 /* CategoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
+		E8B0C7671F429E3000161F07 /* CategorysViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorysViewModel.swift; sourceTree = "<group>"; };
 		E8B0C76C1F429F2700161F07 /* JsonMapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonMapping.swift; sourceTree = "<group>"; };
 		E8B0C76E1F429F8B00161F07 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		E8B0C7711F42A08F00161F07 /* AlertFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertFactory.swift; sourceTree = "<group>"; };
@@ -69,6 +71,8 @@
 		E8B0C7811F42C4B700161F07 /* MediaItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaItem.swift; sourceTree = "<group>"; };
 		E8B0C7831F42C98500161F07 /* ImageCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollection.swift; sourceTree = "<group>"; };
 		E8B0C7851F43D76900161F07 /* JsonError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonError.swift; sourceTree = "<group>"; };
+		E8B0C7871F43EFEB00161F07 /* CategoryCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewController.swift; sourceTree = "<group>"; };
+		E8B0C7891F43F24D00161F07 /* CategoryCollectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,7 +177,8 @@
 		E8B0C7691F429EEE00161F07 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
-				E8B0C7671F429E3000161F07 /* CategoryViewModel.swift */,
+				E8B0C7671F429E3000161F07 /* CategorysViewModel.swift */,
+				E8B0C7891F43F24D00161F07 /* CategoryCollectionViewModel.swift */,
 			);
 			name = "View Model";
 			sourceTree = "<group>";
@@ -182,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				E8B0C7351F42906B00161F07 /* HomeViewController.swift */,
+				E8B0C7871F43EFEB00161F07 /* CategoryCollectionViewController.swift */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -363,9 +369,11 @@
 				E8B0C7631F42931F00161F07 /* ObjectFetcher.swift in Sources */,
 				E8B0C7771F42A16B00161F07 /* CenteredActivityIndicatorView.swift in Sources */,
 				E8B0C76D1F429F2700161F07 /* JsonMapping.swift in Sources */,
-				E8B0C7681F429E3000161F07 /* CategoryViewModel.swift in Sources */,
+				E8B0C7681F429E3000161F07 /* CategorysViewModel.swift in Sources */,
+				E8B0C7881F43EFEB00161F07 /* CategoryCollectionViewController.swift in Sources */,
 				E8B0C7741F42A0CD00161F07 /* UIViewController+AlertHandler.swift in Sources */,
 				E8B0C7841F42C98500161F07 /* ImageCollection.swift in Sources */,
+				E8B0C78A1F43F24D00161F07 /* CategoryCollectionViewModel.swift in Sources */,
 				E8B0C7861F43D76900161F07 /* JsonError.swift in Sources */,
 				E8B0C7721F42A08F00161F07 /* AlertFactory.swift in Sources */,
 				E8B0C7341F42906B00161F07 /* AppDelegate.swift in Sources */,
