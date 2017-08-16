@@ -8,15 +8,19 @@
 
 import UIKit
 
+private let reuseIdentifier = "CategoryTableViewCell"
+
 class HomeViewController: UITableViewController {
     
-    let viewModel = CategorysViewModel()
+    let viewModel = HomeViewModel()
     
     let loadingIndicator = CenteredBlueActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        setupTableView()
         
         insertActivityIndicator()
         
@@ -25,7 +29,19 @@ class HomeViewController: UITableViewController {
         refresh()
     }
     
+    
     //MARK: - UIs
+    private func setupTableView() {
+        
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        
+        tableView.separatorStyle = .none
+        
+        tableView.separatorInset.left = ViewGeometricConstants.contentInsetLeft
+        
+        tableView.contentInset.top = UIApplication.shared.statusBarFrame.height
+    }
+    
     private func insertActivityIndicator() {
         
         tableView.addSubview(loadingIndicator)
@@ -64,6 +80,53 @@ class HomeViewController: UITableViewController {
         refreshControl?.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
     }
     
+    //MARK: - Table view data source
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        
+        return viewModel.numberOfSection()
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return viewModel.numberOfRowsInSection(section)
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
+        
+        configCell(cell!, indexPath: indexPath)
+        
+        return cell!
+    }
+    
+    private func configCell(_ cell: UITableViewCell, indexPath: IndexPath) {
+        
+        //clean up for reuse
+        cell.subviews.forEach { (view) in
+            
+            if view is UICollectionView {
+                
+                view.removeFromSuperview()
+            }
+        }
+        
+        let viewController = viewModel.categoryCollectionViewControllerAtIndexPath(indexPath)
+        addChildViewController(viewController)
+        viewController.collectionView?.frame = cell.bounds
+        cell.addSubview(viewController.collectionView!)
+        viewController.didMove(toParentViewController: self)
+        
+    }
+
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return viewModel.titleForSectionHeader(section)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return viewModel.heightForRowAtIndexPath(indexPath)
+    }
 }
 
  

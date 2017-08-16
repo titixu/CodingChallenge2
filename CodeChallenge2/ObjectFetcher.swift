@@ -6,6 +6,10 @@
 //  Copyright © 2017 AnXu. All rights reserved.
 //
 
+/*
+ All API calls are in the background thread
+ */
+
 import Foundation
 
 class ObjectFetcher {

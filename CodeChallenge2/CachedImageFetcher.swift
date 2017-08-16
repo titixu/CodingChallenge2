@@ -7,6 +7,9 @@
 //
 
 /*
+
+ All API calls are in the background thread
+
  store the image into cache folder
  for example, if the image url is https://image.tmdb.org/t/p/w640/gfJGlDaHuWimErCr5Ql0I8x9QSy.jpg
  then the <URI> will be /t/p/w640/gfJGlDaHuWimErCr5Ql0I8x9QSy.jpg
@@ -19,6 +22,11 @@ import UIKit
 class ImageFetcher {
     
     var url: URL
+    
+    //create and store thumbnail version of an image locally for table or collection view layout
+    var fetchThumbnailVersionImage = false
+    
+    var thumbnailSize = CGSize.zero
     
     //MARK: - Class functions
     static func appCachedImageFolderURL() -> URL? {
@@ -50,10 +58,22 @@ class ImageFetcher {
         }
     }
     
+    //get the thumnail version of a image URL
+    func fetchThumbnailVerionImageWith(_ size: CGSize, completionHandler: @escaping (UIImage?, URL) -> Swift.Void) {
+        
+        fetchThumbnailVersionImage = true
+        
+        thumbnailSize = size
+        
+        fetchImage(completionHandler: completionHandler)
+    }
+
     func fetchImage(completionHandler: @escaping (UIImage?, URL) -> Swift.Void) {
         
         //load cached image if any
-        if let image = cachedImage(forRemoteFileURL: url) {
+        let localImageURL = fetchThumbnailVersionImage ? thumbnailURLFor(originalImageURL: url) : url
+
+        if let image = cachedImage(forRemoteFileURL: localImageURL) {
             
             completionHandler(image, self.url)
             
@@ -71,6 +91,12 @@ class ImageFetcher {
                     self.storeImage(imageData: data, url: self.url)
                     
                     image = UIImage(data: data)
+                    
+                    if self.fetchThumbnailVersionImage {
+                        
+                        image = image?.resizeImageIntoSize(self.thumbnailSize)
+                        
+                    }
                 }
                 
                 completionHandler(image, self.url)
@@ -109,6 +135,21 @@ class ImageFetcher {
                 
                 try imageData.write(to: fileURL, options: .atomicWrite)
                 
+                //Also store an thumbnail version of that image if it is required
+                if fetchThumbnailVersionImage == true {
+                    
+                    let thumbnailURL = thumbnailURLFor(originalImageURL: url)
+                    
+                    let image = UIImage(data: imageData)
+                    
+                    if let thumbnail = image?.resizeImageIntoSize(thumbnailSize),
+                        let fileURL = cacheFileURL(forRemoteAPIURL: thumbnailURL) {
+                        
+                        try UIImageJPEGRepresentation(thumbnail, 1.0)?.write(to: fileURL, options: .atomicWrite)
+                    }
+                    
+                }
+
             } catch {
                 
                 print(error)
@@ -133,6 +174,13 @@ class ImageFetcher {
         }
         
         //create folders if not exists
+        createFoldersFor(fileURL: fileURL)
+        
+        return fileURL
+    }
+    
+    private func createFoldersFor(fileURL: URL) {
+        
         let fileManager = FileManager.default
         
         let folder = fileURL.deletingLastPathComponent()
@@ -141,8 +189,32 @@ class ImageFetcher {
             
             try? fileManager.createDirectory(at: folder, withIntermediateDirectories: true, attributes: nil)
         }
-        
-        return fileURL
     }
     
+    private func thumbnailURLFor(originalImageURL url: URL) -> URL {
+        
+        let filename = url.lastPathComponent
+        
+        var thumbnailUrl = url.deletingLastPathComponent()
+        
+        thumbnailUrl = thumbnailUrl.appendingPathComponent("Thumbnail").appendingPathComponent(filename)
+                
+        return thumbnailUrl
+    }
+}
+
+extension UIImage {
+    
+    func resizeImageIntoSize(_ newSize: CGSize) -> UIImage? {
+        
+        UIGraphicsBeginImageContext(newSize)
+        
+        draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
 }
