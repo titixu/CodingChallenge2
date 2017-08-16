@@ -19,7 +19,7 @@ import UIKit
 class ImageFetcher {
     
     var url: URL
-
+    
     //MARK: - Class functions
     static func appCachedImageFolderURL() -> URL? {
         
@@ -31,16 +31,20 @@ class ImageFetcher {
         
         return result
     }
-
+    
     //clean up any cachedImage downlaoded (no in use for this demo)
     static func removeAllCachedImage() {
+        
         if let folder = appCachedImageFolderURL() {
             
             let fileManager = FileManager.default
             
             do {
+                
                 try fileManager.removeItem(at: folder)
+                
             } catch  {
+                
                 print("ImageFetcher removeAllCachedImage(): \(error)")
             }
         }
@@ -54,14 +58,21 @@ class ImageFetcher {
             completionHandler(image, self.url)
             
         } else {
+            
             //downlaod the image and store it into cache folder
             let fetcher = ObjectFetcher(url: url)
+            
             fetcher.fetchWithLocalCache {(data: Data?, error: Error?) in
+                
                 var image: UIImage?
+                
                 if let data = data {
+                    
                     self.storeImage(imageData: data, url: self.url)
+                    
                     image = UIImage(data: data)
                 }
+                
                 completionHandler(image, self.url)
             }
         }
@@ -69,6 +80,7 @@ class ImageFetcher {
     
     //MARK: - Int
     init(imageURL url: URL) {
+        
         self.url = url
     }
     
@@ -76,11 +88,13 @@ class ImageFetcher {
     //load the image from local cache folder
     func cachedImage(forRemoteFileURL url: URL) -> UIImage? {
         
-        guard let fileURL = cacheFileURL(forRemoteAPIURL: url) else  {
+        guard let fileURL = cacheFileURL(forRemoteAPIURL: url) else {
+            
             return nil
         }
         
         let image = UIImage.init(contentsOfFile: fileURL.path)
+        
         return image
     }
     
@@ -90,14 +104,18 @@ class ImageFetcher {
     private func storeImage(imageData: Data, url: URL) {
         
         if let fileURL = cacheFileURL(forRemoteAPIURL: url) {
+            
             do {
+                
                 try imageData.write(to: fileURL, options: .atomicWrite)
+                
             } catch {
+                
                 print(error)
             }
         }
     }
-
+    
     private func cacheFileURL(forRemoteAPIURL url: URL) -> URL? {
         
         let pathComponents = url.relativePath.components(separatedBy: "/")
@@ -107,15 +125,20 @@ class ImageFetcher {
         }
         
         for component in pathComponents {
+            
             if component.trimmingCharacters(in: .whitespaces) != "" { //ignore empty path
+                
                 fileURL = fileURL.appendingPathComponent(component)
             }
         }
         
         //create folders if not exists
         let fileManager = FileManager.default
+        
         let folder = fileURL.deletingLastPathComponent()
+        
         if fileManager.fileExists(atPath: folder.path) == false {
+            
             try? fileManager.createDirectory(at: folder, withIntermediateDirectories: true, attributes: nil)
         }
         

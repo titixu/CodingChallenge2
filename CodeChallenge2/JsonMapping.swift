@@ -13,8 +13,5 @@ typealias JSON = [String: Any]
 protocol JSONMappable {
     
     //create instance from a json dictionary
-    init?(json: JSON)
-    
-    //dictionaryRepresentation currently not required for this demo
-    //    func json() -> JSON
+    init?(json: JSON) throws
 }

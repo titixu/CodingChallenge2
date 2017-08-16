@@ -9,6 +9,7 @@
 import Foundation
 
 fileprivate enum JsonKey: String {
+    
     case title = "category"
     case items = "items"
 }
@@ -16,22 +17,37 @@ fileprivate enum JsonKey: String {
 class Category: JSONMappable {
     
     var title = ""
+    
     var items = [MediaItem]()
     
-    required init?(json: JSON) {
+    var isFeatured: Bool {
+        
+        return self.title == "Features"
+    }
+    
+    required init?(json: JSON) throws {
         
         guard let title = json[JsonKey.title.rawValue] as? String,
-        let items = json[JsonKey.items.rawValue] as? [JSON]
-            else {
-                return nil
+            let items = json[JsonKey.items.rawValue] as? [JSON] else {
+                
+                throw JsonParingError.JSONValuesMissing
         }
         
         self.title = title
         
         for json in items {
-            if let item = MediaItem(json: json) {
-                self.items.append(item)
+            
+            do {
+                
+                let item = try MediaItem(json: json)
+                
+                self.items.append(item!)
+                
+            } catch {
+                
+                print(error.localizedDescription)
             }
+            
         }
         
     }

@@ -30,13 +30,13 @@ class CachedImageTests: XCTestCase {
     override func tearDown() {
         super.tearDown()
     }
-
+    
     func testRemoveCachedImageFolder() {
         
         ImageFetcher.removeAllCachedImage()
         
         let fileExists = fileManager.fileExists(atPath: ImageFetcher.appCachedImageFolderURL()!.path)
-            
+        
         XCTAssert(fileExists == false , "False to remove image cache folder")
     }
     
@@ -58,7 +58,7 @@ class CachedImageTests: XCTestCase {
             
             aExpectation.fulfill()
         }
-    
+        
         waitForExpectations(timeout: 5.0) { (error: Error?) in
             XCTAssert(error == nil, error!.localizedDescription)
             ImageFetcher.removeAllCachedImage() //clean up
@@ -79,15 +79,18 @@ class CachedImageTests: XCTestCase {
             
             //make sure image is cached
             let cachedImage = imageFetcher.cachedImage(forRemoteFileURL: url)
+            
             XCTAssert(cachedImage != nil, "Image not cached \(url)")
             
             aExpectation.fulfill()
         }
         
         waitForExpectations(timeout: 5.0) { (error: Error?) in
+            
             XCTAssert(error == nil, error!.localizedDescription)
+            
             ImageFetcher.removeAllCachedImage()//clean up
         }
     }
-
+    
 }

@@ -14,8 +14,11 @@ import UIKit
  */
 
 extension UIViewController {
+    
     func displayAlert(message: String) {
+        
         let alert = UIAlertController.alert(description: message)
+        
         present(alert, animated: true, completion: nil)
     }
 }

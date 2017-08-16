@@ -17,9 +17,13 @@ extension UIAlertController {
     
     //A simple UIAlertController with just a message and an "OK" button. Idea for showing an error message to user
     static func alert(description: String) -> UIAlertController {
-        let ac = UIAlertController(title: nil, message: description, preferredStyle: .alert)
+        
+        let alertController = UIAlertController(title: nil, message: description, preferredStyle: .alert)
+        
         let actiont = UIAlertAction(title: "OK", style: .default, handler: nil)
-        ac.addAction(actiont)
-        return ac
+        
+        alertController.addAction(actiont)
+        
+        return alertController
     }
 }

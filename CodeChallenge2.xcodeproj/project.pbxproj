@@ -8,9 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		E8B0C7341F42906B00161F07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0C7331F42906B00161F07 /* AppDelegate.swift */; };
-		E8B0C7361F42906B00161F07 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0C7351F42906B00161F07 /* CategoryViewController.swift */; };
+		E8B0C7361F42906B00161F07 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0C7351F42906B00161F07 /* HomeViewController.swift */; };
 		E8B0C73B1F42906B00161F07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8B0C73A1F42906B00161F07 /* Assets.xcassets */; };
-		E8B0C7491F42906B00161F07 /* CodeChallenge2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0C7481F42906B00161F07 /* CodeChallenge2Tests.swift */; };
 		E8B0C7541F42906B00161F07 /* CodeChallenge2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0C7531F42906B00161F07 /* CodeChallenge2UITests.swift */; };
 		E8B0C7631F42931F00161F07 /* ObjectFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0C7621F42931F00161F07 /* ObjectFetcher.swift */; };
 		E8B0C7651F42939100161F07 /* CachedImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0C7641F42939100161F07 /* CachedImageFetcher.swift */; };
@@ -25,6 +24,7 @@
 		E8B0C7801F42C46400161F07 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0C77F1F42C46400161F07 /* Category.swift */; };
 		E8B0C7821F42C4B700161F07 /* MediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0C7811F42C4B700161F07 /* MediaItem.swift */; };
 		E8B0C7841F42C98500161F07 /* ImageCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0C7831F42C98500161F07 /* ImageCollection.swift */; };
+		E8B0C7861F43D76900161F07 /* JsonError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0C7851F43D76900161F07 /* JsonError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,11 +47,10 @@
 /* Begin PBXFileReference section */
 		E8B0C7301F42906B00161F07 /* CodeChallenge2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeChallenge2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8B0C7331F42906B00161F07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E8B0C7351F42906B00161F07 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		E8B0C7351F42906B00161F07 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E8B0C73A1F42906B00161F07 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E8B0C73F1F42906B00161F07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8B0C7441F42906B00161F07 /* CodeChallenge2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodeChallenge2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E8B0C7481F42906B00161F07 /* CodeChallenge2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeChallenge2Tests.swift; sourceTree = "<group>"; };
 		E8B0C74A1F42906B00161F07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8B0C74F1F42906B00161F07 /* CodeChallenge2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodeChallenge2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8B0C7531F42906B00161F07 /* CodeChallenge2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeChallenge2UITests.swift; sourceTree = "<group>"; };
@@ -69,6 +68,7 @@
 		E8B0C77F1F42C46400161F07 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		E8B0C7811F42C4B700161F07 /* MediaItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaItem.swift; sourceTree = "<group>"; };
 		E8B0C7831F42C98500161F07 /* ImageCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollection.swift; sourceTree = "<group>"; };
+		E8B0C7851F43D76900161F07 /* JsonError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +124,8 @@
 				E8B0C7701F42A07500161F07 /* Alerts */,
 				E8B0C76B1F429F0500161F07 /* JSON */,
 				E8B0C77E1F42C41600161F07 /* Data Model */,
+				E8B0C76A1F429EF600161F07 /* View Controller */,
+				E8B0C7691F429EEE00161F07 /* View Model */,
 				E8B0C7661F429E0700161F07 /* Category */,
 				E8B0C7331F42906B00161F07 /* AppDelegate.swift */,
 				E8B0C73A1F42906B00161F07 /* Assets.xcassets */,
@@ -136,7 +138,6 @@
 			isa = PBXGroup;
 			children = (
 				E8B0C76E1F429F8B00161F07 /* data.json */,
-				E8B0C7481F42906B00161F07 /* CodeChallenge2Tests.swift */,
 				E8B0C74A1F42906B00161F07 /* Info.plist */,
 				E8B0C77A1F42AF5200161F07 /* ObjectFetchingTests.swift */,
 				E8B0C77C1F42B8D700161F07 /* CachedImageTests.swift */,
@@ -165,8 +166,6 @@
 		E8B0C7661F429E0700161F07 /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				E8B0C76A1F429EF600161F07 /* View Controller */,
-				E8B0C7691F429EEE00161F07 /* View Model */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -182,7 +181,7 @@
 		E8B0C76A1F429EF600161F07 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E8B0C7351F42906B00161F07 /* CategoryViewController.swift */,
+				E8B0C7351F42906B00161F07 /* HomeViewController.swift */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -191,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				E8B0C76C1F429F2700161F07 /* JsonMapping.swift */,
+				E8B0C7851F43D76900161F07 /* JsonError.swift */,
 			);
 			name = JSON;
 			sourceTree = "<group>";
@@ -358,7 +358,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8B0C7361F42906B00161F07 /* CategoryViewController.swift in Sources */,
+				E8B0C7361F42906B00161F07 /* HomeViewController.swift in Sources */,
 				E8B0C7801F42C46400161F07 /* Category.swift in Sources */,
 				E8B0C7631F42931F00161F07 /* ObjectFetcher.swift in Sources */,
 				E8B0C7771F42A16B00161F07 /* CenteredActivityIndicatorView.swift in Sources */,
@@ -366,6 +366,7 @@
 				E8B0C7681F429E3000161F07 /* CategoryViewModel.swift in Sources */,
 				E8B0C7741F42A0CD00161F07 /* UIViewController+AlertHandler.swift in Sources */,
 				E8B0C7841F42C98500161F07 /* ImageCollection.swift in Sources */,
+				E8B0C7861F43D76900161F07 /* JsonError.swift in Sources */,
 				E8B0C7721F42A08F00161F07 /* AlertFactory.swift in Sources */,
 				E8B0C7341F42906B00161F07 /* AppDelegate.swift in Sources */,
 				E8B0C7651F42939100161F07 /* CachedImageFetcher.swift in Sources */,
@@ -378,7 +379,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8B0C77B1F42AF5200161F07 /* ObjectFetchingTests.swift in Sources */,
-				E8B0C7491F42906B00161F07 /* CodeChallenge2Tests.swift in Sources */,
 				E8B0C77D1F42B8D700161F07 /* CachedImageTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

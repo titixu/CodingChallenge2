@@ -1,5 +1,5 @@
 //
-//  CategoryViewController.swift
+//  HomeViewController.swift
 //  CodeChallenge2
 //
 //  Created by SamXu on 15/8/17.
@@ -8,26 +8,31 @@
 
 import UIKit
 
-class CategoryViewController: UITableViewController {
-
+class HomeViewController: UITableViewController {
+    
     let viewModel = CategoryViewModel()
+    
     let loadingIndicator = CenteredBlueActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
         insertActivityIndicator()
+        
         addRefreshControl()
+        
         refresh()
     }
-
+    
     //MARK: - UIs
     private func insertActivityIndicator() {
+        
         tableView.addSubview(loadingIndicator)
+        
         loadingIndicator.activateDefaultConstraints(superView: tableView!)
     }
     
- 
     //MARK: - Private methods
     @objc private func refresh() {
         
@@ -37,11 +42,15 @@ class CategoryViewController: UITableViewController {
             DispatchQueue.main.async {
                 
                 self?.loadingIndicator.stopAnimating()
+                
                 self?.refreshControl?.endRefreshing()
                 
                 if let error = error {
+                    
                     self?.displayAlert(message: error.localizedDescription)
+                    
                 } else {
+                    
                     self?.tableView.reloadData()
                 }
             }
@@ -49,8 +58,9 @@ class CategoryViewController: UITableViewController {
     }
     
     private func addRefreshControl() {
+        
         refreshControl = UIRefreshControl()
-        refreshControl?.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        
         refreshControl?.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
     }
     
