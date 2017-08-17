@@ -10,7 +10,7 @@ import UIKit
 
 private let reuseIdentifier = "CategoryTableViewCell"
 
-class HomeViewController: UITableViewController {
+class HomeViewController: UITableViewController, CategoryCollectionViewControllerDelegate {
     
     let viewModel = HomeViewModel()
     
@@ -112,9 +112,15 @@ class HomeViewController: UITableViewController {
         }
         
         let viewController = viewModel.categoryCollectionViewControllerAtIndexPath(indexPath)
+        
+        viewController.delegate = self
+        
         addChildViewController(viewController)
+        
         viewController.collectionView?.frame = cell.bounds
+        
         cell.addSubview(viewController.collectionView!)
+        
         viewController.didMove(toParentViewController: self)
         
     }
@@ -126,6 +132,19 @@ class HomeViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return viewModel.heightForRowAtIndexPath(indexPath)
+    }
+    
+    //MARK: - CategoryCollectionViewControllerDelegate
+    func categoryCollectionViewController(_ collectionViewController: CategoryCollectionViewController, didClickOnItem mediaItemViewModel: DetailViewModel) {
+        
+                let detailViewController = DetailViewController(nibName: nil, bundle: nil)
+        
+                detailViewController.viewModel = mediaItemViewModel
+        
+                detailViewController.modalPresentationStyle = .fullScreen
+        
+                present(detailViewController, animated: true, completion: nil)
+
     }
 }
 

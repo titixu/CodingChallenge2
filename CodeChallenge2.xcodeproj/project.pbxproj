@@ -29,6 +29,9 @@
 		E8B0C78A1F43F24D00161F07 /* CategoryCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0C7891F43F24D00161F07 /* CategoryCollectionViewModel.swift */; };
 		E8B0C78C1F442C0000161F07 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0C78B1F442C0000161F07 /* CategoryCollectionViewCell.swift */; };
 		E8B0C78E1F4462AB00161F07 /* ViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0C78D1F4462AB00161F07 /* ViewConstants.swift */; };
+		E8B0C7901F4507AF00161F07 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0C78F1F4507AF00161F07 /* DetailViewController.swift */; };
+		E8B0C7921F45088B00161F07 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0C7911F45088B00161F07 /* DetailViewModel.swift */; };
+		E8B0C7941F45114400161F07 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0C7931F45114400161F07 /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +80,9 @@
 		E8B0C7891F43F24D00161F07 /* CategoryCollectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewModel.swift; sourceTree = "<group>"; };
 		E8B0C78B1F442C0000161F07 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		E8B0C78D1F4462AB00161F07 /* ViewConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewConstants.swift; sourceTree = "<group>"; };
+		E8B0C78F1F4507AF00161F07 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		E8B0C7911F45088B00161F07 /* DetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		E8B0C7931F45114400161F07 /* DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +189,7 @@
 			children = (
 				E8B0C7671F429E3000161F07 /* HomeViewModel.swift */,
 				E8B0C7891F43F24D00161F07 /* CategoryCollectionViewModel.swift */,
+				E8B0C7911F45088B00161F07 /* DetailViewModel.swift */,
 			);
 			name = "View Model";
 			sourceTree = "<group>";
@@ -192,6 +199,7 @@
 			children = (
 				E8B0C7351F42906B00161F07 /* HomeViewController.swift */,
 				E8B0C7871F43EFEB00161F07 /* CategoryCollectionViewController.swift */,
+				E8B0C78F1F4507AF00161F07 /* DetailViewController.swift */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -220,6 +228,7 @@
 				E8B0C7761F42A16B00161F07 /* CenteredActivityIndicatorView.swift */,
 				E8B0C78B1F442C0000161F07 /* CategoryCollectionViewCell.swift */,
 				E8B0C78D1F4462AB00161F07 /* ViewConstants.swift */,
+				E8B0C7931F45114400161F07 /* DetailView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -377,10 +386,13 @@
 				E8B0C7771F42A16B00161F07 /* CenteredActivityIndicatorView.swift in Sources */,
 				E8B0C76D1F429F2700161F07 /* JsonMapping.swift in Sources */,
 				E8B0C7681F429E3000161F07 /* HomeViewModel.swift in Sources */,
+				E8B0C7921F45088B00161F07 /* DetailViewModel.swift in Sources */,
 				E8B0C7881F43EFEB00161F07 /* CategoryCollectionViewController.swift in Sources */,
 				E8B0C7741F42A0CD00161F07 /* UIViewController+AlertHandler.swift in Sources */,
+				E8B0C7901F4507AF00161F07 /* DetailViewController.swift in Sources */,
 				E8B0C7841F42C98500161F07 /* ImageCollection.swift in Sources */,
 				E8B0C78A1F43F24D00161F07 /* CategoryCollectionViewModel.swift in Sources */,
+				E8B0C7941F45114400161F07 /* DetailView.swift in Sources */,
 				E8B0C78E1F4462AB00161F07 /* ViewConstants.swift in Sources */,
 				E8B0C7861F43D76900161F07 /* JsonError.swift in Sources */,
 				E8B0C7721F42A08F00161F07 /* AlertFactory.swift in Sources */,

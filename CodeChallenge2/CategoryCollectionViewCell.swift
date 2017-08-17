@@ -12,7 +12,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     
     let itemImageView: UIImageView = {
         
-        let imageView = UIImageView(image: #imageLiteral(resourceName: "missing"))
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "loading"))
         
         imageView.contentMode = .scaleToFill
         
@@ -79,7 +79,19 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         titleLabel.topAnchor.constraint(equalTo: itemImageView.bottomAnchor, constant: 4.0).isActive = true
         
         titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        
+        let selectedBackgroundView = UIView(frame: bounds)
+        
+        selectedBackgroundView.backgroundColor = UIColor.lightGray
+        
+        self.selectedBackgroundView = selectedBackgroundView
     }
+    
+    func resetImageToDefault() {
+        
+        itemImageView.image = #imageLiteral(resourceName: "loading")
+    }
+    
 }
 
 class CategoryFeaturedCollectionViewCell: CategoryCollectionViewCell {

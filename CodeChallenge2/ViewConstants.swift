@@ -34,5 +34,7 @@ struct ViewGeometricConstants {
     //for any content inset
     static let contentInsetLeft: CGFloat = 8.0
     
+    //For stack views in Detail view controller
+    static let stackViewSpace: CGFloat = 8.0
 }
 

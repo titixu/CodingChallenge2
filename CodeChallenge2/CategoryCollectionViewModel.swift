@@ -12,7 +12,9 @@ import UIKit
 class CategoryCollectionViewModel {
     
     var category: Category
-    var thumbnailSize = ViewGeometricConstants.featuredMediaItemImageSize
+    
+    //@2x size
+    var thumbnailSize = CGSize(width: ViewGeometricConstants.featuredMediaItemImageSize.width * 2, height: ViewGeometricConstants.featuredMediaItemImageSize.height * 2)
     
     init(category: Category) {
         self.category = category
@@ -78,5 +80,14 @@ class CategoryCollectionViewModel {
             //return the missing image if no image url
             callback(#imageLiteral(resourceName: "missing"), indexPath)
         }
+    }
+    
+    func detailViewModelForIndexPath(indexPath: IndexPath) -> DetailViewModel {
+        
+        let item = category.items[indexPath.row]
+        
+        let detailViewModel = DetailViewModel(item: item)
+        
+        return detailViewModel
     }
 }

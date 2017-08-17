@@ -11,9 +11,16 @@ import UIKit
 private let cellIdentifier = "CategoryCollectionCell"
 private let featuredCellIndetifier = "CategoryFeaturedCollectionViewCell"
 
+protocol CategoryCollectionViewControllerDelegate: NSObjectProtocol {
+    
+    func categoryCollectionViewController(_ collectionViewController: CategoryCollectionViewController, didClickOnItem mediaItemViewModel: DetailViewModel)
+}
+
 class CategoryCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     var viewModel: CategoryCollectionViewModel!
+    
+    weak open var delegate: CategoryCollectionViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +41,19 @@ class CategoryCollectionViewController: UICollectionViewController, UICollection
         collectionView!.contentInset.left = ViewGeometricConstants.contentInsetLeft
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        
+        super.viewDidAppear(animated)
+        
+        if let indexPaths = collectionView!.indexPathsForSelectedItems {
+            
+            for indexPath in indexPaths {
+                
+                collectionView?.deselectItem(at: indexPath, animated: true)
+            }
+        }
+        
+    }
     // MARK:- UICollectionViewDataSource
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
 
@@ -53,23 +73,39 @@ class CategoryCollectionViewController: UICollectionViewController, UICollection
         
         cell.titleLabel.text = viewModel.titleForIndexPath(indexPath)
         
+        cell.resetImageToDefault() //reset the image first, and load the image at "collection view cell willDisplay" delegate method
+        
+        return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        let aCell = cell as! CategoryCollectionViewCell
+        
         viewModel.loadImageAtIndexPath(indexPath) { (image: UIImage?, indexPathOfImage: IndexPath) in
             
             //alway update UI in main queue
             DispatchQueue.main.async {
                 
-                cell.itemImageView.image = image
+                    aCell.itemImageView.image = image
             }
         }
-        
-        return cell
-    }
-    
-    // MARK:- UICollectionViewDelegate
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
 
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let detailViewModel = viewModel.detailViewModelForIndexPath(indexPath: indexPath)
+        
+        collectionView.deselectItem(at: indexPath, animated: true)
+        
+        if let delegate = delegate {
+            
+            delegate.categoryCollectionViewController(self, didClickOnItem: detailViewModel)
+            
+        }        
+    }
+    
     // MARK:- UICollectionViewDelegateFlowLayout 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
