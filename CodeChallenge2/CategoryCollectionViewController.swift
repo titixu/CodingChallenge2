@@ -89,7 +89,11 @@ class CategoryCollectionViewController: UICollectionViewController, UICollection
             //alway update UI in main queue
             DispatchQueue.main.async {
                 
+                if collectionView.indexPath(for: cell) == indexPathOfImage {
+                    
                     aCell.itemImageView.image = image
+                    
+                }
             }
         }
 
