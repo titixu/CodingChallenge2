@@ -1,5 +1,5 @@
 //
-//  JsonMapping.swift
+//  JSONMapping.swift
 //  CodeChallenge2
 //
 //  Created by SamXu on 15/8/17.
@@ -11,7 +11,7 @@ import Foundation
 typealias JSON = [String: Any]
 
 protocol JSONMappable {
-    
-    //create instance from a json dictionary
+
+    // create instance from a json dictionary
     init?(json: JSON) throws
 }

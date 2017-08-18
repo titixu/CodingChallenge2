@@ -16,8 +16,6 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         
         imageView.contentMode = .scaleToFill
         
-        imageView.layer.masksToBounds = true
-        
         return imageView
     }()
     
@@ -45,8 +43,9 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
+    
     
     func defaultMediaItemImageSize() -> CGSize {
         
@@ -61,7 +60,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         
         addSubview(titleLabel)
         
-        //image view layout
+        // image view layout
         itemImageView.translatesAutoresizingMaskIntoConstraints = false
         
         itemImageView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
@@ -71,15 +70,15 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         itemImageView.widthAnchor.constraint(equalToConstant: defaultMediaItemImageSize().width).isActive = true
         
         itemImageView.heightAnchor.constraint(equalToConstant: defaultMediaItemImageSize().height).isActive = true
-
-        //title label layout
+        
+        // title label layout
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         titleLabel.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         
         titleLabel.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         
-        titleLabel.topAnchor.constraint(equalTo: itemImageView.bottomAnchor, constant: 4.0).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: itemImageView.bottomAnchor, constant: ViewGeometricConstants.meditaItemCellTitleSpace).isActive = true
         
         titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         

@@ -8,13 +8,13 @@
 
 import Foundation
 
-fileprivate enum JsonKey: String {
+fileprivate enum JSONKey: String {
     
-    case title = "title"
+    case title
     
-    case year = "year"
+    case year
     
-    case description = "description"
+    case description
     
     case imageCollection = "images"
 }
@@ -27,16 +27,16 @@ class MediaItem: JSONMappable {
     
     var description = ""
     
-    var imageCollection : ImageCollection
+    var imageCollection: ImageCollection
     
     required init?(json: JSON) throws {
         
-        guard let title = json[JsonKey.title.rawValue] as? String,
-            let year = json[JsonKey.year.rawValue] as? NSNumber,
-            let description = json[JsonKey.description.rawValue] as? String,
-            let images = json[JsonKey.imageCollection.rawValue] as? JSON else {
-                
-                throw JsonParingError.JSONValuesMissing
+        guard let title = json[JSONKey.title.rawValue] as? String,
+            let year = json[JSONKey.year.rawValue] as? NSNumber,
+            let description = json[JSONKey.description.rawValue] as? String,
+            let images = json[JSONKey.imageCollection.rawValue] as? JSON else {
+            
+            throw JSONParingError.valuesMissing
         }
         
         self.title = title
@@ -45,9 +45,9 @@ class MediaItem: JSONMappable {
         
         self.description = description
         
-        guard let imageCollection = try? ImageCollection(json:images) else {
+        guard let imageCollection = try? ImageCollection(json: images) else {
             
-            throw JsonParingError.JSONValuesMissing
+            throw JSONParingError.valuesMissing
         }
         
         self.imageCollection = imageCollection!

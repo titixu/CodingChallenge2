@@ -1,5 +1,5 @@
 //
-//  JsonError.swift
+//  JSONError.swift
 //  CodeChallenge2
 //
 //  Created by SamXu on 16/8/17.
@@ -8,9 +8,10 @@
 
 import Foundation
 
-enum JsonParingError: Error {
-    
-    case invalidJsonStructure
-    case JSONValuesMissing
-    
+enum JSONParingError: Error {
+
+    case invalidJSONStructure
+
+    case valuesMissing
+
 }

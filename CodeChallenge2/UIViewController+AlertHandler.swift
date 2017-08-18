@@ -6,7 +6,6 @@
 //  Copyright © 2017 AnXu. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 /*
@@ -14,11 +13,11 @@ import UIKit
  */
 
 extension UIViewController {
-    
+
     func displayAlert(message: String) {
-        
+
         let alert = UIAlertController.alert(description: message)
-        
+
         present(alert, animated: true, completion: nil)
     }
 }

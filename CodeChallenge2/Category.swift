@@ -8,11 +8,11 @@
 
 import Foundation
 
-fileprivate enum JsonKey: String {
+fileprivate enum JSONKey: String {
     
     case title = "category"
     
-    case items = "items"
+    case items
 }
 
 class Category: JSONMappable {
@@ -28,10 +28,10 @@ class Category: JSONMappable {
     
     required init?(json: JSON) throws {
         
-        guard let title = json[JsonKey.title.rawValue] as? String,
-            let items = json[JsonKey.items.rawValue] as? [JSON] else {
-                
-                throw JsonParingError.JSONValuesMissing
+        guard let title = json[JSONKey.title.rawValue] as? String,
+            let items = json[JSONKey.items.rawValue] as? [JSON] else {
+            
+            throw JSONParingError.valuesMissing
         }
         
         self.title = title

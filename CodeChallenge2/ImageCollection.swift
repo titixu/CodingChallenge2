@@ -8,11 +8,11 @@
 
 import Foundation
 
-fileprivate enum JsonKey: String {
+fileprivate enum JSONKey: String {
     
-    case portrait = "portrait"
+    case portrait
     
-    case landscape = "landscape"
+    case landscape
 }
 
 class ImageCollection: JSONMappable {
@@ -23,10 +23,10 @@ class ImageCollection: JSONMappable {
     
     required init?(json: JSON) throws {
         
-        guard let portrait = json[JsonKey.portrait.rawValue] as? String,
-            let landscape = json[JsonKey.landscape.rawValue] as? String else {
-                
-                throw JsonParingError.JSONValuesMissing
+        guard let portrait = json[JSONKey.portrait.rawValue] as? String,
+            let landscape = json[JSONKey.landscape.rawValue] as? String else {
+            
+            throw JSONParingError.valuesMissing
         }
         
         portraitURL = URL(string: portrait)

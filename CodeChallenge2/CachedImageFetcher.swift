@@ -7,40 +7,43 @@
 //
 
 /*
-
+ 
  All API calls are in the background thread
-
+ 
  store the image into cache folder
  for example, if the image url is https://image.tmdb.org/t/p/w640/gfJGlDaHuWimErCr5Ql0I8x9QSy.jpg
  then the <URI> will be /t/p/w640/gfJGlDaHuWimErCr5Ql0I8x9QSy.jpg
  and the image will get stored in <cached folder>/<URI>
  */
 
-import Foundation
 import UIKit
+
+let cacheImagePath = "CachedImages"
+
+let thumbnailFolderName = "Thumbnail"
 
 class ImageFetcher {
     
     var url: URL
     
-    //create and store thumbnail version of an image locally for table or collection view layout
+    // create and store thumbnail version of an image locally for table or collection view layout
     var fetchThumbnailVersionImage = false
     
     var thumbnailSize = CGSize.zero
     
-    //MARK: - Class functions
+    // MARK: - Class functions
     static func appCachedImageFolderURL() -> URL? {
         
         let cachesDirectoryPath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0]
         
         let cachesDirectoryURL = (NSURL(fileURLWithPath: cachesDirectoryPath)) as URL
         
-        let result = cachesDirectoryURL.appendingPathComponent("CachedImages")
+        let result = cachesDirectoryURL.appendingPathComponent(cacheImagePath)
         
         return result
     }
     
-    //clean up any cachedImage downlaoded (no in use for this demo)
+    // clean up any cachedImage downlaoded (no in use for this demo)
     static func removeAllCachedImage() {
         
         if let folder = appCachedImageFolderURL() {
@@ -51,14 +54,14 @@ class ImageFetcher {
                 
                 try fileManager.removeItem(at: folder)
                 
-            } catch  {
+            } catch {
                 
                 print("ImageFetcher removeAllCachedImage(): \(error)")
             }
         }
     }
     
-    //get the thumnail version of a image URL
+    // get the thumnail version of a image URL
     func fetchThumbnailVerionImageWith(_ size: CGSize, completionHandler: @escaping (UIImage?, URL) -> Swift.Void) {
         
         fetchThumbnailVersionImage = true
@@ -67,22 +70,22 @@ class ImageFetcher {
         
         fetchImage(completionHandler: completionHandler)
     }
-
+    
     func fetchImage(completionHandler: @escaping (UIImage?, URL) -> Swift.Void) {
         
-        //load cached image if any
+        // load cached image if any
         let localImageURL = fetchThumbnailVersionImage ? thumbnailURLFor(originalImageURL: url) : url
-
+        
         if let image = cachedImage(forRemoteFileURL: localImageURL) {
             
-            completionHandler(image, self.url)
+            completionHandler(image, url)
             
         } else {
             
-            //downlaod the image and store it into cache folder
+            // downlaod the image and store it into cache folder
             let fetcher = ObjectFetcher(url: url)
             
-            fetcher.fetchWithLocalCache {(data: Data?, error: Error?) in
+            fetcher.fetchWithLocalCache { (data: Data?, _: Error?) in
                 
                 var image: UIImage?
                 
@@ -104,14 +107,14 @@ class ImageFetcher {
         }
     }
     
-    //MARK: - Int
+    // MARK: - Int
     init(imageURL url: URL) {
         
         self.url = url
     }
     
-    //MARK: - Public Mehtods
-    //load the image from local cache folder
+    // MARK: - Public Mehtods
+    // load the image from local cache folder
     func cachedImage(forRemoteFileURL url: URL) -> UIImage? {
         
         guard let fileURL = cacheFileURL(forRemoteAPIURL: url) else {
@@ -119,14 +122,14 @@ class ImageFetcher {
             return nil
         }
         
-        let image = UIImage.init(contentsOfFile: fileURL.path)
+        let image = UIImage(contentsOfFile: fileURL.path)
         
         return image
     }
     
-    //MARK: - Private methods
+    // MARK: - Private methods
     
-    //store the image into cache folder
+    // store the image into cache folder
     private func storeImage(imageData: Data, url: URL) {
         
         if let fileURL = cacheFileURL(forRemoteAPIURL: url) {
@@ -135,7 +138,7 @@ class ImageFetcher {
                 
                 try imageData.write(to: fileURL, options: .atomicWrite)
                 
-                //Also store an thumbnail version of that image if it is required
+                // Also store an thumbnail version of that image if it is required
                 if fetchThumbnailVersionImage == true {
                     
                     let thumbnailURL = thumbnailURLFor(originalImageURL: url)
@@ -149,7 +152,7 @@ class ImageFetcher {
                     }
                     
                 }
-
+                
             } catch {
                 
                 print(error)
@@ -167,13 +170,13 @@ class ImageFetcher {
         
         for component in pathComponents {
             
-            if component.trimmingCharacters(in: .whitespaces) != "" { //ignore empty path
+            if component.trimmingCharacters(in: .whitespaces) != "" { // ignore empty path
                 
                 fileURL = fileURL.appendingPathComponent(component)
             }
         }
         
-        //create folders if not exists
+        // create folders if not exists
         createFoldersFor(fileURL: fileURL)
         
         return fileURL
@@ -197,8 +200,8 @@ class ImageFetcher {
         
         var thumbnailUrl = url.deletingLastPathComponent()
         
-        thumbnailUrl = thumbnailUrl.appendingPathComponent("Thumbnail").appendingPathComponent(filename)
-                
+        thumbnailUrl = thumbnailUrl.appendingPathComponent(thumbnailFolderName).appendingPathComponent(filename)
+        
         return thumbnailUrl
     }
 }

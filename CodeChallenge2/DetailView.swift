@@ -9,7 +9,7 @@
 import UIKit
 
 class DetailView: UIView {
-
+    
     let titleLabel: UILabel = {
         
         let label = UILabel(frame: CGRect.zero)
@@ -51,7 +51,7 @@ class DetailView: UIView {
         label.isAccessibilityElement = true
         
         return label
-
+        
     }()
     
     let descriptionLabel: UILabel = {
@@ -60,19 +60,19 @@ class DetailView: UIView {
         
         label.font = UIFont.preferredFont(forTextStyle: .body)
         
-        label.numberOfLines = 0
+        label.numberOfLines = 0 //set to zero for unlimit of lines
         
         label.translatesAutoresizingMaskIntoConstraints = false
         
         label.isAccessibilityElement = true
         
         return label
-
+        
     }()
     
     let closeButton: UIButton = {
         
-       let button = UIButton(type: .system)
+        let button = UIButton(type: .system)
         
         button.setTitle("X", for: .normal)
         
@@ -95,8 +95,7 @@ class DetailView: UIView {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
     
     func setupViews() {
@@ -116,7 +115,7 @@ class DetailView: UIView {
         
         topStackView.backgroundColor = UIColor.red
         
-        //whole stack view for the view
+        // whole stack view for the view
         let bodyStackView = UIStackView(arrangedSubviews: [topStackView, imageView, yearLabel, descriptionLabel])
         
         bodyStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -127,7 +126,7 @@ class DetailView: UIView {
         
         addSubview(bodyStackView)
         
-        //stack view anchors to full screen of view
+        // stack view anchors to full screen of view
         bodyStackView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         
         bodyStackView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
@@ -141,16 +140,16 @@ class DetailView: UIView {
         
         topStackView.rightAnchor.constraint(equalTo: bodyStackView.rightAnchor).isActive = true
         
-        //Fix size for the close button
+        // Fix size for the close button
         closeButton.widthAnchor.constraint(equalToConstant: ViewGeometricConstants.closeButtonSize.width).isActive = true
         
         closeButton.heightAnchor.constraint(equalToConstant: ViewGeometricConstants.closeButtonSize.height).isActive = true
         
-        //Fix heigt for year label and description label
+        // Fix heigt for year label and description label
         yearLabel.heightAnchor.constraint(equalToConstant: ViewGeometricConstants.labelHeightNormal).isActive = true
         
         descriptionLabel.heightAnchor.constraint(equalToConstant: ViewGeometricConstants.labelHeightTall).isActive = true
         
     }
-
+    
 }

@@ -22,14 +22,14 @@ class CachedImageTests: XCTestCase {
     let landscapeImageURL = URL(string: "https://image.tmdb.org/t/p/original/hA5oCgvgCxj5MEWcLpjXXTwEANF.jpg")!
     
     let fileManager = FileManager.default
-        
+    
     func testRemoveCachedImageFolder() {
         
         ImageFetcher.removeAllCachedImage()
         
         let fileExists = fileManager.fileExists(atPath: ImageFetcher.appCachedImageFolderURL()!.path)
         
-        XCTAssert(fileExists == false , "False to remove image cache folder")
+        XCTAssert(fileExists == false, "False to remove image cache folder")
     }
     
     func testPortraitImageDownlaod() {
@@ -44,7 +44,7 @@ class CachedImageTests: XCTestCase {
             
             XCTAssert(image != nil, "No image from \(url)")
             
-            //make sure image is cached
+            // make sure image is cached
             let cachedImage = imageFetcher.cachedImage(forRemoteFileURL: url)
             XCTAssert(cachedImage != nil, "Image not cached \(url)")
             
@@ -53,7 +53,7 @@ class CachedImageTests: XCTestCase {
         
         waitForExpectations(timeout: 60.0) { (error: Error?) in
             XCTAssert(error == nil, error!.localizedDescription)
-            ImageFetcher.removeAllCachedImage() //clean up
+            ImageFetcher.removeAllCachedImage() // clean up
         }
     }
     
@@ -69,7 +69,7 @@ class CachedImageTests: XCTestCase {
             
             XCTAssert(image != nil, "No image from \(url)")
             
-            //make sure image is cached
+            // make sure image is cached
             let cachedImage = imageFetcher.cachedImage(forRemoteFileURL: url)
             
             XCTAssert(cachedImage != nil, "Image not cached \(url)")
@@ -81,7 +81,7 @@ class CachedImageTests: XCTestCase {
             
             XCTAssert(error == nil, error!.localizedDescription)
             
-            ImageFetcher.removeAllCachedImage()//clean up
+            ImageFetcher.removeAllCachedImage() // clean up
         }
     }
     

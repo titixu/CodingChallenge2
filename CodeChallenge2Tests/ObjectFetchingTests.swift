@@ -16,7 +16,7 @@ import XCTest
 
 class ObjectFetchingTests: XCTestCase {
     
-    let catagoryURL  = URL(string: "https://pastebin.com/raw/8LiEHfwU")!
+    let catagoryURL = URL(string: "https://pastebin.com/raw/8LiEHfwU")!
     
     func testCategoryAPI() {
         
@@ -30,12 +30,12 @@ class ObjectFetchingTests: XCTestCase {
             
             XCTAssert(data != nil, error!.localizedDescription)
             
-            //TODO:  also compare the data with data.json
+            // TODO: also compare the data with data.json
             let jsons = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [JSON]
             
             XCTAssert(jsons != nil, "Error converting data to json object")
             
-            //test the json mapping
+            // test the json mapping
             for json in jsons! {
                 
                 let category = try? Category(json: json)
@@ -46,7 +46,6 @@ class ObjectFetchingTests: XCTestCase {
                 
                 XCTAssertNotNil(category??.items.first?.imageCollection.landscapeURL, "Missing lanscape url")
             }
-            
             
             aExpectation.fulfill()
         }

@@ -12,7 +12,7 @@ private let reuseIdentifier = "CategoryTableViewCell"
 
 class HomeViewController: UITableViewController, CategoryCollectionViewControllerDelegate, DetailViewControllerDelegate {
     
-    //For custom view controller transitioning animation
+    // For custom view controller transitioning animation
     private let transistionDelegate = HomeViewControllerTransition()
     
     private let viewModel = HomeViewModel()
@@ -32,8 +32,7 @@ class HomeViewController: UITableViewController, CategoryCollectionViewControlle
         refresh()
     }
     
-    
-    //MARK: - UIs
+    // MARK: - UIs
     private func setupTableView() {
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
@@ -52,12 +51,12 @@ class HomeViewController: UITableViewController, CategoryCollectionViewControlle
         loadingIndicator.activateDefaultConstraints(superView: tableView!)
     }
     
-    //MARK: - Private methods
+    // MARK: - Private methods
     @objc private func refresh() {
         
         loadingIndicator.startAnimating()
         
-        viewModel.loadData {[weak self] (error: Error?) in
+        viewModel.loadData { [weak self] (error: Error?) in
             DispatchQueue.main.async {
                 
                 self?.loadingIndicator.stopAnimating()
@@ -69,7 +68,7 @@ class HomeViewController: UITableViewController, CategoryCollectionViewControlle
                     self?.displayAlert(message: error.localizedDescription)
                     
                 }
-                    
+                
                 self?.tableView.reloadData()
             }
         }
@@ -82,7 +81,7 @@ class HomeViewController: UITableViewController, CategoryCollectionViewControlle
         refreshControl?.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
     }
     
-    //MARK: - Table view data source
+    // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         
         return viewModel.numberOfSection()
@@ -104,8 +103,8 @@ class HomeViewController: UITableViewController, CategoryCollectionViewControlle
     
     private func configCell(_ cell: UITableViewCell, indexPath: IndexPath) {
         
-        //clean up for reuse
-        cell.subviews.forEach { (view) in
+        // clean up for reuse
+        cell.subviews.forEach { view in
             
             if view is UICollectionView {
                 
@@ -126,7 +125,7 @@ class HomeViewController: UITableViewController, CategoryCollectionViewControlle
         viewController.didMove(toParentViewController: self)
         
     }
-
+    
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         return viewModel.titleForSectionHeader(section)
@@ -137,7 +136,7 @@ class HomeViewController: UITableViewController, CategoryCollectionViewControlle
         return viewModel.heightForRowAtIndexPath(indexPath)
     }
     
-    //MARK: - CategoryCollectionViewControllerDelegate
+    // MARK: - CategoryCollectionViewControllerDelegate
     func categoryCollectionViewController(_ collectionViewController: CategoryCollectionViewController, didClickOnItem mediaItemViewModel: DetailViewModel, withCellFrameInScreen frame: CGRect) {
         
         let detailViewController = DetailViewController(nibName: nil, bundle: nil)
@@ -156,10 +155,9 @@ class HomeViewController: UITableViewController, CategoryCollectionViewControlle
         
     }
     
-    //MARK: - DetailViewControllerDelegate
+    // MARK: - DetailViewControllerDelegate
     func detailViewControllerDidClickCloseButton(_ viewController: DetailViewController) {
         
         dismiss(animated: true, completion: nil)
     }
 }
-

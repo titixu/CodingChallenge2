@@ -1,5 +1,5 @@
 //
-//  AlertFactory.swift
+//  Alert+Factory.swift
 //  CodeChallenge2
 //
 //  Created by SamXu on 15/8/17.
@@ -10,12 +10,11 @@
  This class create different kind of alert controllers
  */
 
-import Foundation
 import UIKit
 
 extension UIAlertController {
     
-    //A simple UIAlertController with just a message and an "OK" button. Idea for showing an error message to user
+    // A simple UIAlertController with just a message and an "OK" button. Idea for showing an error message to user
     static func alert(description: String) -> UIAlertController {
         
         let alertController = UIAlertController(title: nil, message: description, preferredStyle: .alert)

@@ -6,14 +6,13 @@
 //  Copyright © 2017 AnXu. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class CategoryCollectionViewModel {
     
     var category: Category
     
-    //@2x size
+    // @2x size
     var thumbnailSize = CGSize(width: ViewGeometricConstants.featuredMediaItemImageSize.width * 2, height: ViewGeometricConstants.featuredMediaItemImageSize.height * 2)
     
     init(category: Category) {
@@ -30,7 +29,7 @@ class CategoryCollectionViewModel {
         
         return 1
     }
-
+    
     func numberOfItems(inSection section: Int) -> Int {
         
         return category.items.count
@@ -40,7 +39,7 @@ class CategoryCollectionViewModel {
         
         let item = category.items[indexPath.row]
         
-        return NSLocalizedString( item.title, comment: "Category item title")
+        return NSLocalizedString(item.title, comment: "Category item title")
     }
     
     func sizeForItemAtIndexPath(indexPath: IndexPath) -> CGSize {
@@ -55,8 +54,8 @@ class CategoryCollectionViewModel {
         }
     }
     
-    func loadImageAtIndexPath(_ indexPath: IndexPath,  callback: @escaping (UIImage?, IndexPath) -> Swift.Void) {
-
+    func loadImageAtIndexPath(_ indexPath: IndexPath, callback: @escaping (UIImage?, IndexPath) -> Swift.Void) {
+        
         DispatchQueue.global(qos: .userInitiated).async {
             
             let imageCollection = self.category.items[indexPath.row].imageCollection
@@ -67,8 +66,8 @@ class CategoryCollectionViewModel {
                 
                 if self.isFeatured() {
                     
-                    //get the thumbnail image instead of original image for better user scrolling expience
-                    imageFetcher.fetchThumbnailVerionImageWith(self.thumbnailSize, completionHandler: { (image:UIImage?, _) in
+                    // get the thumbnail image instead of original image for better user scrolling expience
+                    imageFetcher.fetchThumbnailVerionImageWith(self.thumbnailSize, completionHandler: { (image: UIImage?, _) in
                         
                         callback(image, indexPath)
                     })
@@ -83,7 +82,7 @@ class CategoryCollectionViewModel {
                 
             } else {
                 
-                //return the missing image if no image url
+                // return the missing image if no image url
                 callback(#imageLiteral(resourceName: "missing"), indexPath)
             }
         }

@@ -6,7 +6,6 @@
 //  Copyright © 2017 AnXu. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class DetailViewModel {
@@ -31,7 +30,7 @@ class DetailViewModel {
                 
                 let imageFetcher = ImageFetcher(imageURL: url)
                 
-                imageFetcher.fetchImage(completionHandler: { (image: UIImage?, url: URL) in
+                imageFetcher.fetchImage(completionHandler: { (image: UIImage?, _: URL) in
                     
                     callback(image)
                 })
@@ -42,7 +41,7 @@ class DetailViewModel {
             }
         }
     }
-
+    
     func year() -> String {
         
         return NSLocalizedString(String(item.year), comment: "Media item detail view year")

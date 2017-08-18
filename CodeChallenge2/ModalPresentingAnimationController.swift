@@ -26,7 +26,7 @@ class ModalPresentingAnimationController: NSObject, UIViewControllerAnimatedTran
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         
         guard let _ = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from),
-        let toViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) else { return }
+            let toViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) else { return }
         
         let containerView = transitionContext.containerView
         
@@ -46,11 +46,11 @@ class ModalPresentingAnimationController: NSObject, UIViewControllerAnimatedTran
         
         let duration = transitionDuration(using: transitionContext)
         
-        UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: { 
+        UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: {
             
             snapshot.frame = finalFrame
             
-        }) { (_) in
+        }) { _ in
             
             toViewController.view.isHidden = false
             
@@ -101,7 +101,7 @@ class ModalDismissAnimationController: NSObject, UIViewControllerAnimatedTransit
             
             snapshot.frame = finalFrame
             
-        }) { (_) in
+        }) { _ in
             
             fromViewController.view.isHidden = false
             
@@ -110,6 +110,5 @@ class ModalDismissAnimationController: NSObject, UIViewControllerAnimatedTransit
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
     }
-
     
 }

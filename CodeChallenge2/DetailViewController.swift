@@ -9,10 +9,10 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
+    
     var viewModel: DetailViewModel!
     
-    weak open var delegate: DetailViewControllerDelegate?
+    open weak var delegate: DetailViewControllerDelegate?
     
     let contentView = DetailView(frame: CGRect.zero)
     
@@ -21,7 +21,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor.white
-                
+        
         let spacing = ViewGeometricConstants.stackViewSpace
         
         view.addSubview(contentView)
@@ -39,8 +39,8 @@ class DetailViewController: UIViewController {
         contentView.yearLabel.text = viewModel.year()
         
         contentView.descriptionLabel.text = viewModel.theDescription()
-                
-        viewModel.fetchImage {[weak self] (image: UIImage?) in
+        
+        viewModel.fetchImage { [weak self] (image: UIImage?) in
             
             DispatchQueue.main.async {
                 
@@ -51,8 +51,7 @@ class DetailViewController: UIViewController {
         
         contentView.closeButton.addTarget(self, action: #selector(closeButton(sender:)), for: .touchUpInside)
     }
-
-
+    
     @objc func closeButton(sender: Any) {
         
         if let delegate = delegate {
@@ -64,5 +63,5 @@ class DetailViewController: UIViewController {
 
 protocol DetailViewControllerDelegate: NSObjectProtocol {
     
-    func detailViewControllerDidClickCloseButton(_ viewController: DetailViewController )
+    func detailViewControllerDidClickCloseButton(_ viewController: DetailViewController)
 }
