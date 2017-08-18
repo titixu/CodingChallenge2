@@ -68,10 +68,9 @@ class HomeViewController: UITableViewController, CategoryCollectionViewControlle
                     
                     self?.displayAlert(message: error.localizedDescription)
                     
-                } else {
-                    
-                    self?.tableView.reloadData()
                 }
+                    
+                self?.tableView.reloadData()
             }
         }
     }

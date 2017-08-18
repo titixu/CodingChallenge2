@@ -1,10 +1,14 @@
 # Coding Challenge 2
 # Description
+
 Display and listing media with categories data from https://pastebin.com/raw/8LiEHfwU
+
+See the "description.pdf" in size the project folder for full details
 
 ## Wireframes
 ![Wireframe 1](Wireframes/1.jpg)
 ![Wireframe 2](Wireframes/2.jpg)
+
 
 ## Feature Requirements
 ✅ Implement according to the wireframes provided
@@ -51,7 +55,7 @@ To run the app open it with Xcode 8.3.3. Pleaes change the "Signing" setting to 
 * Devices supported: iPhone and iPad
 * Deploy Target: iOS 9.0 and above
 * Xcode Verions: 8.3.3
-* Tested Devices: iPhone 6S, iPad Air
+* Tested Devices: iPhone 6S (iOS 10), iPad Air (iOS 10)
 
 # Unit Tests
 * tested API call (files: ObjectFetchingTests.swift )
@@ -80,3 +84,4 @@ To run the app open it with Xcode 8.3.3. Pleaes change the "Signing" setting to 
 * Images cached locally
 * Accessibility: VoiceOver enabled for labels and buttons
 * All images loading is on background thread, except some very small placeholder images
+* Custom transition animation when presenting the detail view and dismissing the detail view
