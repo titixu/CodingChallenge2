@@ -34,6 +34,7 @@ class HomeViewModel {
             if let data = data {
                 
                 do {
+                    
                     let jsons = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [JSON]
                     
                     self.categorys = [] //clean up old categorys data
@@ -44,7 +45,7 @@ class HomeViewModel {
                         
                         //Feature category always at the top
                         if category!.isFeatured == true {
-                            //
+                            
                             self.categorys.insert(category!, at: 0)
                             
                         } else {

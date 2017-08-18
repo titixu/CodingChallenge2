@@ -32,6 +32,7 @@ class DetailViewModel {
                 let imageFetcher = ImageFetcher(imageURL: url)
                 
                 imageFetcher.fetchImage(completionHandler: { (image: UIImage?, url: URL) in
+                    
                     callback(image)
                 })
                 

@@ -9,6 +9,7 @@
 import UIKit
 
 private let cellIdentifier = "CategoryCollectionCell"
+
 private let featuredCellIndetifier = "CategoryFeaturedCollectionViewCell"
 
 protocol CategoryCollectionViewControllerDelegate: NSObjectProtocol {
@@ -24,6 +25,7 @@ class CategoryCollectionViewController: UICollectionViewController, UICollection
     weak open var delegate: CategoryCollectionViewControllerDelegate?
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
         //setup collection view
@@ -92,11 +94,9 @@ class CategoryCollectionViewController: UICollectionViewController, UICollection
                 if collectionView.indexPath(for: cell) == indexPathOfImage {
                     
                     aCell.itemImageView.image = image
-                    
                 }
             }
         }
-
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

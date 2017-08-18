@@ -6,6 +6,10 @@
 //  Copyright © 2017 AnXu. All rights reserved.
 //
 
+/*
+ A spinner in the middle from its super view, indicating loading
+ */
+
 import UIKit
 
 class CenteredBlueActivityIndicatorView: UIActivityIndicatorView {

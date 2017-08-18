@@ -11,6 +11,7 @@ import Foundation
 fileprivate enum JsonKey: String {
     
     case title = "category"
+    
     case items = "items"
 }
 

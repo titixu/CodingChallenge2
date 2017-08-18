@@ -3,7 +3,7 @@
 
 Display and listing media with categories data from https://pastebin.com/raw/8LiEHfwU
 
-See the "description.pdf" in size the project folder for full details
+See the "description.pdf" in side the project folder for full details
 
 ## Wireframes
 ![Wireframe 1](Wireframes/1.jpg)

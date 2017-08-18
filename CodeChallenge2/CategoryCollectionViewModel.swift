@@ -17,6 +17,7 @@ class CategoryCollectionViewModel {
     var thumbnailSize = CGSize(width: ViewGeometricConstants.featuredMediaItemImageSize.width * 2, height: ViewGeometricConstants.featuredMediaItemImageSize.height * 2)
     
     init(category: Category) {
+        
         self.category = category
     }
     
@@ -26,10 +27,12 @@ class CategoryCollectionViewModel {
     }
     
     func numberOfSections() -> Int {
+        
         return 1
     }
 
     func numberOfItems(inSection section: Int) -> Int {
+        
         return category.items.count
     }
     

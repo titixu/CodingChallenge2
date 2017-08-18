@@ -6,6 +6,10 @@
 //  Copyright © 2017 AnXu. All rights reserved.
 //
 
+/*
+    Animation controllers for custom transition animation
+ */
+
 import UIKit
 
 fileprivate let transitionAnimationDuration = 0.5

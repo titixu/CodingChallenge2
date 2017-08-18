@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 /*
- Cpmvemoemt functions to display alert message in view controller
+ functions to display alert message in view controller
  */
 
 extension UIViewController {

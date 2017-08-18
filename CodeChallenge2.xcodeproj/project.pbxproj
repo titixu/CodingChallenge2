@@ -54,8 +54,6 @@
 		E8B0C73F1F42906B00161F07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8B0C7441F42906B00161F07 /* CodeChallenge2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodeChallenge2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8B0C74A1F42906B00161F07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E8B0C7531F42906B00161F07 /* CodeChallenge2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeChallenge2UITests.swift; sourceTree = "<group>"; };
-		E8B0C7551F42906B00161F07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8B0C7621F42931F00161F07 /* ObjectFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectFetcher.swift; sourceTree = "<group>"; };
 		E8B0C7641F42939100161F07 /* CachedImageFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachedImageFetcher.swift; sourceTree = "<group>"; };
 		E8B0C7671F429E3000161F07 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -110,7 +108,6 @@
 			children = (
 				E8B0C7321F42906B00161F07 /* CodeChallenge2 */,
 				E8B0C7471F42906B00161F07 /* CodeChallenge2Tests */,
-				E8B0C7521F42906B00161F07 /* CodeChallenge2UITests */,
 				E8B0C7311F42906B00161F07 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -150,15 +147,6 @@
 				E8B0C77C1F42B8D700161F07 /* CachedImageTests.swift */,
 			);
 			path = CodeChallenge2Tests;
-			sourceTree = "<group>";
-		};
-		E8B0C7521F42906B00161F07 /* CodeChallenge2UITests */ = {
-			isa = PBXGroup;
-			children = (
-				E8B0C7531F42906B00161F07 /* CodeChallenge2UITests.swift */,
-				E8B0C7551F42906B00161F07 /* Info.plist */,
-			);
-			path = CodeChallenge2UITests;
 			sourceTree = "<group>";
 		};
 		E8B0C7611F42930100161F07 /* Object Fetcher */ = {

@@ -9,19 +9,23 @@
 import Foundation
 
 fileprivate enum JsonKey: String {
+    
     case portrait = "portrait"
+    
     case landscape = "landscape"
 }
 
 class ImageCollection: JSONMappable {
     
     var portraitURL: URL?
+    
     var landscapeURL: URL?
     
     required init?(json: JSON) throws {
         
         guard let portrait = json[JsonKey.portrait.rawValue] as? String,
             let landscape = json[JsonKey.landscape.rawValue] as? String else {
+                
                 throw JsonParingError.JSONValuesMissing
         }
         

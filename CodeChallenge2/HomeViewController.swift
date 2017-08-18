@@ -160,10 +160,6 @@ class HomeViewController: UITableViewController, CategoryCollectionViewControlle
     func detailViewControllerDidClickCloseButton(_ viewController: DetailViewController) {
         
         dismiss(animated: true, completion: nil)
-        
     }
-    
-    
-    
 }
 

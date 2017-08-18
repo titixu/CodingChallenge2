@@ -11,16 +11,22 @@ import Foundation
 fileprivate enum JsonKey: String {
     
     case title = "title"
+    
     case year = "year"
+    
     case description = "description"
+    
     case imageCollection = "images"
 }
 
 class MediaItem: JSONMappable {
     
     var title = ""
+    
     var year = 0
+    
     var description = ""
+    
     var imageCollection : ImageCollection
     
     required init?(json: JSON) throws {
@@ -34,7 +40,9 @@ class MediaItem: JSONMappable {
         }
         
         self.title = title
+        
         self.year = Int(year)
+        
         self.description = description
         
         guard let imageCollection = try? ImageCollection(json:images) else {

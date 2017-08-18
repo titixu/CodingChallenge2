@@ -43,6 +43,7 @@ class DetailViewController: UIViewController {
         viewModel.fetchImage {[weak self] (image: UIImage?) in
             
             DispatchQueue.main.async {
+                
                 self?.contentView.imageView.image = image
             }
             
