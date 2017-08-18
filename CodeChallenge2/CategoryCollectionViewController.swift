@@ -13,7 +13,8 @@ private let featuredCellIndetifier = "CategoryFeaturedCollectionViewCell"
 
 protocol CategoryCollectionViewControllerDelegate: NSObjectProtocol {
     
-    func categoryCollectionViewController(_ collectionViewController: CategoryCollectionViewController, didClickOnItem mediaItemViewModel: DetailViewModel)
+    //return the frame for custom transitioning animation
+    func categoryCollectionViewController(_ collectionViewController: CategoryCollectionViewController, didClickOnItem mediaItemViewModel: DetailViewModel, withCellFrameInScreen frame: CGRect)
 }
 
 class CategoryCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
@@ -39,6 +40,7 @@ class CategoryCollectionViewController: UICollectionViewController, UICollection
         collectionView!.backgroundColor = UIColor.white
         
         collectionView!.contentInset.left = ViewGeometricConstants.contentInsetLeft
+        
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -95,14 +97,22 @@ class CategoryCollectionViewController: UICollectionViewController, UICollection
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        //get the cell in screen rect for custom transitioning animation
+        var cellFrameInScreen = CGRect.zero
+        
+        if let cell = collectionView.cellForItem(at: indexPath) {
+            
+            cellFrameInScreen = cell.convert(cell.bounds, to: nil)
+        }
+        
+        
         let detailViewModel = viewModel.detailViewModelForIndexPath(indexPath: indexPath)
         
         collectionView.deselectItem(at: indexPath, animated: true)
         
         if let delegate = delegate {
             
-            delegate.categoryCollectionViewController(self, didClickOnItem: detailViewModel)
-            
+            delegate.categoryCollectionViewController(self, didClickOnItem: detailViewModel, withCellFrameInScreen: cellFrameInScreen)
         }        
     }
     

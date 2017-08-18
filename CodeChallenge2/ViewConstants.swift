@@ -36,5 +36,17 @@ struct ViewGeometricConstants {
     
     //For stack views in Detail view controller
     static let stackViewSpace: CGFloat = 8.0
+    
+    //bit more space at the top
+    static let stackViewTopSpace: CGFloat = 20.0
+    
+    //close button 
+    static let closeButtonSize: CGSize = CGSize(width: 40.0, height: 40.0)
+    
+    //normal label height
+    static let labelHeightNormal: CGFloat = 30.0
+    
+    //tall label height
+    static let labelHeightTall: CGFloat = 80.0
 }
 

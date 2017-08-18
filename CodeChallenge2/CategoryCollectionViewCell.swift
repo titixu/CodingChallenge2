@@ -31,6 +31,8 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         
         label.numberOfLines = 0
         
+        label.isAccessibilityElement = true
+        
         return label
     }()
     

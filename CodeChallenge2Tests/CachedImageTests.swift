@@ -22,15 +22,7 @@ class CachedImageTests: XCTestCase {
     let landscapeImageURL = URL(string: "https://image.tmdb.org/t/p/original/hA5oCgvgCxj5MEWcLpjXXTwEANF.jpg")!
     
     let fileManager = FileManager.default
-    
-    override func setUp() {
-        super.setUp()
-    }
-    
-    override func tearDown() {
-        super.tearDown()
-    }
-    
+        
     func testRemoveCachedImageFolder() {
         
         ImageFetcher.removeAllCachedImage()
@@ -59,7 +51,7 @@ class CachedImageTests: XCTestCase {
             aExpectation.fulfill()
         }
         
-        waitForExpectations(timeout: 5.0) { (error: Error?) in
+        waitForExpectations(timeout: 60.0) { (error: Error?) in
             XCTAssert(error == nil, error!.localizedDescription)
             ImageFetcher.removeAllCachedImage() //clean up
         }
@@ -85,7 +77,7 @@ class CachedImageTests: XCTestCase {
             aExpectation.fulfill()
         }
         
-        waitForExpectations(timeout: 5.0) { (error: Error?) in
+        waitForExpectations(timeout: 60.0) { (error: Error?) in
             
             XCTAssert(error == nil, error!.localizedDescription)
             

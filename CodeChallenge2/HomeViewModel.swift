@@ -11,11 +11,11 @@ import UIKit
 
 class HomeViewModel {
     
-    let catagoryURL  = URL(string: "https://pastebin.com/raw/8LiEHfwU")!
+    private let catagoryURL  = URL(string: "https://pastebin.com/raw/8LiEHfwU")!
     
-    var categorys = [Category]()
+    private var categorys = [Category]()
     
-    lazy var objectFetcher: ObjectFetcher = {
+    private lazy var objectFetcher: ObjectFetcher = {
         
         return ObjectFetcher(url: self.catagoryURL)
     }()

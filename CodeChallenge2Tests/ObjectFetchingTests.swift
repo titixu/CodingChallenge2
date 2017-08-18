@@ -19,6 +19,7 @@ class ObjectFetchingTests: XCTestCase {
     let catagoryURL  = URL(string: "https://pastebin.com/raw/8LiEHfwU")!
     
     func testCategoryAPI() {
+        
         let aExpectation = expectation(description: "test category API")
         
         let objectFetcher = ObjectFetcher(url: self.catagoryURL)

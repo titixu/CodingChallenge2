@@ -10,11 +10,14 @@ import UIKit
 
 private let reuseIdentifier = "CategoryTableViewCell"
 
-class HomeViewController: UITableViewController, CategoryCollectionViewControllerDelegate {
+class HomeViewController: UITableViewController, CategoryCollectionViewControllerDelegate, DetailViewControllerDelegate {
     
-    let viewModel = HomeViewModel()
+    //For custom view controller transitioning animation
+    private let transistionDelegate = HomeViewControllerTransition()
     
-    let loadingIndicator = CenteredBlueActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+    private let viewModel = HomeViewModel()
+    
+    private let loadingIndicator = CenteredBlueActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     
     override func viewDidLoad() {
         
@@ -126,6 +129,7 @@ class HomeViewController: UITableViewController, CategoryCollectionViewControlle
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
         return viewModel.titleForSectionHeader(section)
     }
     
@@ -135,17 +139,32 @@ class HomeViewController: UITableViewController, CategoryCollectionViewControlle
     }
     
     //MARK: - CategoryCollectionViewControllerDelegate
-    func categoryCollectionViewController(_ collectionViewController: CategoryCollectionViewController, didClickOnItem mediaItemViewModel: DetailViewModel) {
+    func categoryCollectionViewController(_ collectionViewController: CategoryCollectionViewController, didClickOnItem mediaItemViewModel: DetailViewModel, withCellFrameInScreen frame: CGRect) {
         
-                let detailViewController = DetailViewController(nibName: nil, bundle: nil)
+        let detailViewController = DetailViewController(nibName: nil, bundle: nil)
         
-                detailViewController.viewModel = mediaItemViewModel
+        detailViewController.viewModel = mediaItemViewModel
         
-                detailViewController.modalPresentationStyle = .fullScreen
+        detailViewController.modalPresentationStyle = .fullScreen
         
-                present(detailViewController, animated: true, completion: nil)
-
+        detailViewController.delegate = self
+        
+        detailViewController.transitioningDelegate = transistionDelegate
+        
+        transistionDelegate.originFrame = frame
+        
+        present(detailViewController, animated: true, completion: nil)
+        
     }
+    
+    //MARK: - DetailViewControllerDelegate
+    func detailViewControllerDidClickCloseButton(_ viewController: DetailViewController) {
+        
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
+    
+    
 }
 
- 

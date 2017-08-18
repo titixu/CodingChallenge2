@@ -54,31 +54,35 @@ class CategoryCollectionViewModel {
     
     func loadImageAtIndexPath(_ indexPath: IndexPath,  callback: @escaping (UIImage?, IndexPath) -> Swift.Void) {
 
-        let imageCollection = category.items[indexPath.row].imageCollection
-        
-        if let url = isFeatured() ? imageCollection.landscapeURL : imageCollection.portraitURL {
+        DispatchQueue.global(qos: .userInitiated).async {
             
-            let imageFetcher = ImageFetcher(imageURL: url)
+            let imageCollection = self.category.items[indexPath.row].imageCollection
             
-            if isFeatured() {
-                //get the thumbnail image instead of original image for better user scrolling expience
-                imageFetcher.fetchThumbnailVerionImageWith(thumbnailSize, completionHandler: { (image:UIImage?, _) in
+            if let url = self.isFeatured() ? imageCollection.landscapeURL : imageCollection.portraitURL {
+                
+                let imageFetcher = ImageFetcher(imageURL: url)
+                
+                if self.isFeatured() {
                     
-                    callback(image, indexPath)
-                })
+                    //get the thumbnail image instead of original image for better user scrolling expience
+                    imageFetcher.fetchThumbnailVerionImageWith(self.thumbnailSize, completionHandler: { (image:UIImage?, _) in
+                        
+                        callback(image, indexPath)
+                    })
+                    
+                } else {
+                    
+                    imageFetcher.fetchImage(completionHandler: { (image: UIImage?, _) in
+                        
+                        callback(image, indexPath)
+                    })
+                }
                 
             } else {
                 
-                imageFetcher.fetchImage(completionHandler: { (image: UIImage?, _) in
-                    
-                    callback(image, indexPath)
-                })
+                //return the missing image if no image url
+                callback(#imageLiteral(resourceName: "missing"), indexPath)
             }
-            
-        } else {
-            
-            //return the missing image if no image url
-            callback(#imageLiteral(resourceName: "missing"), indexPath)
         }
     }
     

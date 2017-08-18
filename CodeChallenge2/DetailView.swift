@@ -18,6 +18,8 @@ class DetailView: UIView {
         
         label.translatesAutoresizingMaskIntoConstraints = false
         
+        label.isAccessibilityElement = true
+        
         return label
     }()
     
@@ -29,8 +31,6 @@ class DetailView: UIView {
         
         imageview.translatesAutoresizingMaskIntoConstraints = false
         
-        imageview.setContentHuggingPriority(249, for: .vertical)
-
         imageview.clipsToBounds = true
         
         imageview.layer.borderColor = UIColor.gray.cgColor
@@ -48,6 +48,8 @@ class DetailView: UIView {
         
         label.translatesAutoresizingMaskIntoConstraints = false
         
+        label.isAccessibilityElement = true
+        
         return label
 
     }()
@@ -62,7 +64,7 @@ class DetailView: UIView {
         
         label.translatesAutoresizingMaskIntoConstraints = false
         
-        label.setContentHuggingPriority(248, for: .vertical)
+        label.isAccessibilityElement = true
         
         return label
 
@@ -77,6 +79,10 @@ class DetailView: UIView {
         button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
         
         button.translatesAutoresizingMaskIntoConstraints = false
+        
+        button.isAccessibilityElement = true
+        
+        button.accessibilityLabel = "Close Button"
         
         return button
     }()
@@ -136,14 +142,15 @@ class DetailView: UIView {
         topStackView.rightAnchor.constraint(equalTo: bodyStackView.rightAnchor).isActive = true
         
         //Fix size for the close button
-        closeButton.widthAnchor.constraint(equalToConstant: 40.0).isActive = true
+        closeButton.widthAnchor.constraint(equalToConstant: ViewGeometricConstants.closeButtonSize.width).isActive = true
         
-        closeButton.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
+        closeButton.heightAnchor.constraint(equalToConstant: ViewGeometricConstants.closeButtonSize.height).isActive = true
         
         //Fix heigt for year label and description label
-        yearLabel.heightAnchor.constraint(equalToConstant: 20.0).isActive = true
+        yearLabel.heightAnchor.constraint(equalToConstant: ViewGeometricConstants.labelHeightNormal).isActive = true
         
-        descriptionLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 80.0).isActive = true
+        descriptionLabel.heightAnchor.constraint(equalToConstant: ViewGeometricConstants.labelHeightTall).isActive = true
+        
     }
 
 }

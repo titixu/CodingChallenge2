@@ -11,7 +11,7 @@ Display and listing media with categories data from https://pastebin.com/raw/8Li
 
 ✅ Single View Controller application
 
-✅ Vertication table views
+✅ Vertical table views
 
 ✅ Child collection views with horizontal orientation
 
@@ -21,7 +21,7 @@ Display and listing media with categories data from https://pastebin.com/raw/8Li
 
 ✅ No third-party code / libries
 
-✅ Programmatic layout (No StoryBoards or xibs)
+✅ Programmatic layout (No StoryBoards nor xibs)
 
 ✅ Use of AutoLayouts for layouts
 
@@ -68,7 +68,7 @@ To run the app open it with Xcode 8.3.3. Pleaes change the "Signing" setting to 
 
 # Limitations / Assumptions
 * Invalid JSON data object will result hiding that data object from user. However, an error message will print in the console. This is to avoid showing multiple popup messages to user during multiple JSON errors occurred
-* No manaul Accessibility added to UI elements due to the complexity of no storyboard and nib are allowed
+* Limited Accessibility added to UI elements: Voiceover only for labels and buttons
 * Media title label are max in 3 lines in the collection cell which are suitable for this demo
 * For security issue, the app only allows HTTP call from thetvdb.com domain. As this demo appear to be that it only requires HTTP calls from thetvdb.com domain. For more HTTP calls to other domain please add these domains into "App Transport Security Settings" on Info.plist
 
@@ -77,3 +77,6 @@ To run the app open it with Xcode 8.3.3. Pleaes change the "Signing" setting to 
 
 # Extra
 * Thumbnail version of images are created locally for the feature image section for smoother collection view scrolling
+* Images cached locally
+* Accessibility: VoiceOver enabled for labels and buttons
+* All images loading is on background thread, except some very small placeholder images

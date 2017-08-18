@@ -12,6 +12,8 @@ class DetailViewController: UIViewController {
 
     var viewModel: DetailViewModel!
     
+    weak open var delegate: DetailViewControllerDelegate?
+    
     let contentView = DetailView(frame: CGRect.zero)
     
     override func viewDidLoad() {
@@ -24,7 +26,7 @@ class DetailViewController: UIViewController {
         
         view.addSubview(contentView)
         
-        contentView.topAnchor.constraint(equalTo: view.topAnchor, constant: UIApplication.shared.statusBarFrame.height + spacing).isActive = true
+        contentView.topAnchor.constraint(equalTo: view.topAnchor, constant: UIApplication.shared.statusBarFrame.height + ViewGeometricConstants.stackViewTopSpace).isActive = true
         
         contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -spacing).isActive = true
         
@@ -52,6 +54,14 @@ class DetailViewController: UIViewController {
 
     @objc func closeButton(sender: Any) {
         
-        dismiss(animated: true, completion: nil)
+        if let delegate = delegate {
+            
+            delegate.detailViewControllerDidClickCloseButton(self)
+        }
     }
+}
+
+protocol DetailViewControllerDelegate: NSObjectProtocol {
+    
+    func detailViewControllerDidClickCloseButton(_ viewController: DetailViewController )
 }
