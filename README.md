@@ -1,7 +1,7 @@
 # Coding Challenge 2
 # Description
 
-Display and listing media with categories data from https://pastebin.com/raw/8LiEHfwU
+Display and listing meida data from https://pastebin.com/raw/8LiEHfwU
 
 See the "description.pdf" in side the project folder for full details
 
@@ -66,9 +66,6 @@ To run the app open it with Xcode 8.3.3. Pleaes change the "Signing" setting to 
 # Error Handled
 * Internet connection and API calls errors
 * Invalid JSON errors
-
-# Time Logs
-* Project started at Tuesday 15th Auguest 11:30 AM
 
 # Limitations / Assumptions
 * Invalid JSON data object will result hiding that data object from user. However, an error message will print in the console. This is to avoid showing multiple popup messages to user during multiple JSON errors occurred

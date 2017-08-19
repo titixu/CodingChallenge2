@@ -12,7 +12,8 @@
 
 import UIKit
 
-fileprivate let transitionAnimationDuration = 0.5
+// After bit of expirence over different durations, 0.3 feel the best for me
+fileprivate let transitionAnimationDuration = 0.3
 
 class ModalPresentingAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
     
@@ -63,7 +64,7 @@ class ModalPresentingAnimationController: NSObject, UIViewControllerAnimatedTran
 
 class ModalDismissAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
     
-    //zoom (dismiss) the view into this frame
+    // zoom (dismiss) the view into this frame
     var destinationFrame = CGRect.zero
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
