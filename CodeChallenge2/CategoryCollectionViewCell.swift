@@ -25,7 +25,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         
         label.text = NSLocalizedString("Title", comment: "Media title default text")
         
-        label.font = UIFont.systemFont(ofSize: 11.0, weight: UIFontWeightRegular)
+        label.font = UIFont.systemFont(ofSize: 11.0, weight: UIFont.Weight.regular)
         
         label.numberOfLines = 0
         

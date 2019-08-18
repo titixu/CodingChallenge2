@@ -41,7 +41,7 @@ class MediaItem: JSONMappable {
         
         self.title = title
         
-        self.year = Int(year)
+        self.year = year.intValue
         
         self.description = description
         
@@ -50,7 +50,7 @@ class MediaItem: JSONMappable {
             throw JSONParingError.valuesMissing
         }
         
-        self.imageCollection = imageCollection!
+        self.imageCollection = imageCollection
         
     }
     

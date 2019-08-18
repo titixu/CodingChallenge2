@@ -43,7 +43,6 @@ class ImageFetcher {
         return result
     }
     
-    // clean up any cachedImage downlaoded (no in use for this demo)
     static func removeAllCachedImage() {
         
         if let folder = appCachedImageFolderURL() {
@@ -148,7 +147,8 @@ class ImageFetcher {
                     if let thumbnail = image?.resizeImageIntoSize(thumbnailSize),
                         let fileURL = cacheFileURL(forRemoteAPIURL: thumbnailURL) {
                         
-                        try UIImageJPEGRepresentation(thumbnail, 1.0)?.write(to: fileURL, options: .atomicWrite)
+                       let jpegData = thumbnail.jpegData(compressionQuality: 1.0) as NSData?
+                        try? jpegData?.write(to: fileURL, options: .atomicWrite)
                     }
                     
                 }

@@ -17,7 +17,7 @@ class HomeViewController: UITableViewController, CategoryCollectionViewControlle
     
     private let viewModel = HomeViewModel()
     
-    private let loadingIndicator = CenteredBlueActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+    private let loadingIndicator = CenteredBlueActivityIndicatorView(style: .whiteLarge)
     
     override func viewDidLoad() {
         
@@ -78,7 +78,7 @@ class HomeViewController: UITableViewController, CategoryCollectionViewControlle
         
         refreshControl = UIRefreshControl()
         
-        refreshControl?.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
+        refreshControl?.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
     }
     
     // MARK: - Table view data source
@@ -116,13 +116,13 @@ class HomeViewController: UITableViewController, CategoryCollectionViewControlle
         
         viewController.delegate = self
         
-        addChildViewController(viewController)
+        addChild(viewController)
         
         viewController.collectionView?.frame = cell.bounds
         
         cell.addSubview(viewController.collectionView!)
         
-        viewController.didMove(toParentViewController: self)
+        viewController.didMove(toParent: self)
         
     }
     

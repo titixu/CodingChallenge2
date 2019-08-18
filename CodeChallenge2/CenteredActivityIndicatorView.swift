@@ -14,9 +14,9 @@ import UIKit
 
 class CenteredBlueActivityIndicatorView: UIActivityIndicatorView {
     
-    override init(activityIndicatorStyle style: UIActivityIndicatorViewStyle) {
+    override init(style: UIActivityIndicatorView.Style) {
         
-        super.init(activityIndicatorStyle: style)
+        super.init(style: style)
         
         color = UIColor.blue
         
